@@ -1,10 +1,12 @@
-import React from 'react';
 import {useContext} from 'react';
+import {Button} from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Link} from 'react-router-dom';
 import {AuthContext} from '../../../context/AuthProvider/AuthProvider';
 import './Header.css';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
@@ -33,13 +35,36 @@ const Header = () => {
                 </Nav>
                 <Nav>
                     <Nav>
+                        <>
+                            {['bottom',].map((placement) => ( <OverlayTrigger
+                                key={placement} 
+                                 placement={placement}
+                                overlay={ <Tooltip id={`tooltip-${placement}`}> 
+                                    {
+                                        user?.displayName
+                                    }
+                                </Tooltip> 
+                            } 
+                            >
+                               <img
+                            className='rounded-circle mx-3'
+                            src={user
+                            ?.photoURL}
+                            style={{
+                            width: '40px',
+                            height: '40px'
+                        }}
+                            alt=""/>
+                               </OverlayTrigger> 
+                               ))}
+                            </>
+
+                    </Nav>
+                    <Nav>
                         {user
                             ?.email
-                                ? <button onClick={handleLogout}>LogOut</button>
-                                : 
-                                <> 
-                                    <Link className='login' to='/login'>LogIn</Link> 
-                                    <Link className = 'register' to = '/register' > Register</Link>
+                                ? <Button onClick={handleLogout} variant="info">LogOut</Button>
+                                : <> <Link className='login' to='/login'>LogIn</Link> < Link className = 'register' to = '/register' > Register </Link>
                                 </>
 }
 
