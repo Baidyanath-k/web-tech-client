@@ -10,6 +10,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
+    
 
     const handleLogout = () => {
         logOut().then(() => {}).catch(error => {
@@ -35,7 +36,7 @@ const Header = () => {
                 </Nav>
                 <Nav>
                     <Nav>
-                        <>
+                        <Link to='/profile'>
                             {['bottom',].map((placement) => ( <OverlayTrigger
                                 key={placement} 
                                  placement={placement}
@@ -57,7 +58,7 @@ const Header = () => {
                             alt=""/>
                                </OverlayTrigger> 
                                ))}
-                            </>
+                            </Link>
 
                     </Nav>
                     <Nav>

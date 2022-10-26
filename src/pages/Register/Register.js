@@ -3,14 +3,15 @@ import {useState} from 'react';
 import {useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {AuthContext} from '../../context/AuthProvider/AuthProvider';
 import './Register.css';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle,FaGithub } from "react-icons/fa";
 
 const Register = () => {
-    const {registerWithEmailAndPassword,signInWithGoogle} = useContext(AuthContext);
+    const {registerWithEmailAndPassword,signInWithGoogle,updateUserProfile} = useContext(AuthContext);
+    const navigate=useNavigate();
 
     const [error,
         setError] = useState();
@@ -28,14 +29,17 @@ const Register = () => {
         registerWithEmailAndPassword(email, password).then(result => {
             const user = result.user;
             setSuccess('Success');
+            navigate('/');
             setError('');
             form.reset();
+            handleProfile(name,photoURL)
             console.log(user);
         }).catch(error => {
             setError(error.message);
             setSuccess('');
             console.error(error)
         })
+
 
     }
     const [check,unCheck] = useState(false);
@@ -51,6 +55,19 @@ const Register = () => {
         })
         .catch(error=>{
             console.error(error);
+        })
+    }
+
+
+    const handleProfile=(name,photoURL)=>{
+        const profile={
+            displayName:name,
+            photoURL:photoURL
+        }
+        updateUserProfile(profile)
+        .then(  ()=>{} )
+        .catch(error=>{
+            console.error(error)
         })
     }
 

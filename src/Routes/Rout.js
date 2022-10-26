@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import Courses from "../pages/Courses/Courses";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
 import TremsAndCondition from "../pages/TermsAndCondition/TremsAndCondition";
 
@@ -31,6 +32,10 @@ export const router=createBrowserRouter([
             {
                 path:'/trems',
                 element:<TremsAndCondition></TremsAndCondition>
+            },
+            {
+                path:'/profile',
+                element:<Profile></Profile>
             }
 
 
