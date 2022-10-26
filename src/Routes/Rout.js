@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Courses from "../pages/Courses/Courses";
+import Blog from "../pages/Blog/Blog";
+import Courses from "../pages/Courses/main/Courses";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
@@ -36,9 +37,18 @@ export const router=createBrowserRouter([
             {
                 path:'/profile',
                 element:<Profile></Profile>
+            },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
             }
 
 
         ]
+    },
+    {
+        path:'*',
+        element: <h2>404 This Element Not Found</h2>
     }
+
 ])

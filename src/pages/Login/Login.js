@@ -9,7 +9,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {AuthContext} from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const {loginWithEmailAndPassword,signInWithGoogle} = useContext(AuthContext);
+    const {loginWithEmailAndPassword,signInWithGoogle, githubLogin} = useContext(AuthContext);
     const navigate = useNavigate();
     const [error,
         setError] = useState('');
@@ -45,6 +45,16 @@ const Login = () => {
             console.error(error);
         })
     }
+    const handleGithub=()=>{
+        githubLogin()
+        .then(result=>{
+            const user=result.user;
+            console.log(user)
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+    }
 
     return (
         <div className="login-main-container">
@@ -72,10 +82,10 @@ const Login = () => {
                     </Form.Text>
                 </Form>
             </div>
-            <div className="social">
+            <div className="social w-50 m-auto">
             <ButtonGroup vertical className=' py-5 w-100 text-center'>
-                    <Button onClick={handleWithGoogle} className='mb-3'> <FaGoogle></FaGoogle> Google SignIn</Button>
-                    <Button> <FaGithub></FaGithub>  GitHub SignIn</Button>
+                    <Button onClick={handleWithGoogle} className='mb-3'> <FaGoogle></FaGoogle> Google Login</Button>
+                    <Button onClick={handleGithub}> <FaGithub></FaGithub>  GitHub Login</Button>
                 </ButtonGroup>
             </div>
 

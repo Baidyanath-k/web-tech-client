@@ -33,6 +33,10 @@ const Header = () => {
                     <Nav className='nav_link nav-link'>
                         <Link to='/courses'>Courses</Link>
                     </Nav>
+
+                    <Nav className='nav_link nav-link'>
+                        <Link to='/blog'>Blogs</Link>
+                    </Nav>
                 </Nav>
                 <Nav>
                     <Nav>
@@ -63,7 +67,7 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         {user
-                            ?.email
+                            ?.uid
                                 ? <Button onClick={handleLogout} variant="info">LogOut</Button>
                                 : <> <Link className='login' to='/login'>LogIn</Link> < Link className = 'register' to = '/register' > Register </Link>
                                 </>
