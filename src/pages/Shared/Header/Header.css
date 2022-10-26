@@ -1,8 +1,9 @@
 .main-navbar{
-    background-color: #fff;
+    background-color: rgb(185, 184, 184);
     color: #000;
     font-size: 18px;
     font-weight: 600;
+    
 }
 .logo{
     text-decoration: none;
@@ -24,5 +25,22 @@
     color: rgba(0, 0, 0, 0.541);
 }
 .nav_link a:hover{
+    color: #E29400;
+}
+.login{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.541);
+    margin-right: 5px;
+    transition: all 0.3s linear;
+}
+.login:hover{
+    color: #E29400;
+}
+.register{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.541);
+    transition: all 0.3s linear;
+}
+.register:hover{
     color: #E29400;
 }
