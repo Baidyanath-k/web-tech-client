@@ -49,12 +49,11 @@ export const router=createBrowserRouter([
             {
                 path:'/details-category/:id',
                 element:<PrivateRout><DetailsCategory></DetailsCategory></PrivateRout>,
-                // element:    <DetailsCategory></DetailsCategory>,
                 loader:({params})=>fetch(`http://localhost:5000/details-category/${params.id}`)
             },
             {
                 path:'/details/:id',
-                element:<DetailsLearning></DetailsLearning>,
+                element:<PrivateRout><DetailsLearning></DetailsLearning></PrivateRout>,
                 loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
             },
 
