@@ -24,7 +24,7 @@ export const router=createBrowserRouter([
             {
                 path:'/courses',
                 element:<Courses></Courses>,
-                loader:()=>fetch(`http://localhost:5000/details`)
+                loader:()=>fetch(`https://assignment-learning-10-server.vercel.app/details`)
             },
             {
                 path:'/login',
@@ -49,12 +49,13 @@ export const router=createBrowserRouter([
             {
                 path:'/details-category/:id',
                 element:<PrivateRout><DetailsCategory></DetailsCategory></PrivateRout>,
-                loader:({params})=>fetch(`http://localhost:5000/details-category/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-learning-10-server.vercel.app/details-category/${params.id}`)
             },
             {
                 path:'/details/:id',
                 element:<PrivateRout><DetailsLearning></DetailsLearning></PrivateRout>,
-                loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+
+                loader:({params})=>fetch(`https://assignment-learning-10-server.vercel.app/details/${params.id}`)
             },
 
 
