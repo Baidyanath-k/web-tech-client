@@ -6,6 +6,7 @@ import DetailsCategory from "../pages/DetailsCategory/DetailsCategory";
 import DetailsLearning from "../pages/DetailsLearning/DetailsLearning";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import PrivateRout from "../pages/PrivateRout/PrivateRout";
 import Profile from "../pages/Profile/Profile";
 import Register from "../pages/Register/Register";
 import TremsAndCondition from "../pages/TermsAndCondition/TremsAndCondition";
@@ -47,7 +48,8 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/details-category/:id',
-                element:<DetailsCategory></DetailsCategory>,
+                element:<PrivateRout><DetailsCategory></DetailsCategory></PrivateRout>,
+                // element:    <DetailsCategory></DetailsCategory>,
                 loader:({params})=>fetch(`http://localhost:5000/details-category/${params.id}`)
             },
             {
