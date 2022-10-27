@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaEye, FaStar } from 'react-icons/fa';
+import { useReactToPrint } from 'react-to-print';
 
 const DetailsLearning = () => {
     const detailLearning=useLoaderData();
@@ -14,9 +15,14 @@ const DetailsLearning = () => {
         total_view,
         image_url
     } = detailLearning;
+    const component=useRef();
+    const handlePrint=useReactToPrint({
+        content:()=>component.current,
+    })
     return (
         <div>
-            <Card className="text-center mb-4">
+            <button className='my-5 text-center' onClick={handlePrint}>Download Pdf</button>
+            <Card className="text-center mb-4" ref={component}>
                 <Card.Header className='d-flex justify-content-between align-items-center'>
                     <div className="card-header-left">
                         <img
