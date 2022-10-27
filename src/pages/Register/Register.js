@@ -3,20 +3,21 @@ import {useState} from 'react';
 import {useContext} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {AuthContext} from '../../context/AuthProvider/AuthProvider';
 import './Register.css';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle,FaGithub } from "react-icons/fa";
 
 const Register = () => {
-    const {registerWithEmailAndPassword,signInWithGoogle,updateUserProfile} = useContext(AuthContext);
+    const {registerWithEmailAndPassword,signInWithGoogle,updateUserProfile,githubLogin} = useContext(AuthContext);
     const navigate=useNavigate();
-
+    const location=useLocation()
     const [error,
         setError] = useState();
     const [success,
         setSuccess] = useState();
+        const from=location.state?.from?.pathname || '/';
     const registerHandle = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -29,7 +30,7 @@ const Register = () => {
         registerWithEmailAndPassword(email, password).then(result => {
             const user = result.user;
             setSuccess('Success');
-            navigate('/');
+            navigate(from,{replace:true});
             setError('');
             form.reset();
             handleProfile(name,photoURL)
@@ -51,12 +52,26 @@ const Register = () => {
         signInWithGoogle()
         .then(result=>{
             const user=result.user;
+            navigate(from,{replace:true})
             console.log(user)
         })
         .catch(error=>{
             console.error(error);
         })
     }
+
+    const handleGithub=()=>{
+        githubLogin()
+        .then(result=>{
+            const user=result.user;
+            navigate(from,{replace:true});
+            console.log(user)
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+    }
+    
 
 
     const handleProfile=(name,photoURL)=>{
@@ -118,7 +133,7 @@ const Register = () => {
             <div className="other-form w-50 m-auto">
                 <ButtonGroup vertical className=' py-5 w-100 text-center'>
                     <Button onClick={handleWithGoogle} className='mb-3'> <FaGoogle></FaGoogle> Google SignIn</Button>
-                    <Button> <FaGithub></FaGithub>  GitHub SignIn</Button>
+                    <Button onClick={handleGithub}> <FaGithub></FaGithub>  GitHub SignIn</Button>
                 </ButtonGroup>
             </div>
 

@@ -28,7 +28,6 @@ const Login = () => {
             const user = result.user;
             setSuccess('Success');
             setError('');
-            
             navigate(from,{replace:true})
             console.log(user)
         }).catch(error => {
@@ -42,6 +41,7 @@ const Login = () => {
         signInWithGoogle()
         .then(result=>{
             const user=result.user;
+            navigate(from,{replace:true})
             console.log(user)
         })
         .catch(error=>{
@@ -52,6 +52,7 @@ const Login = () => {
         githubLogin()
         .then(result=>{
             const user=result.user;
+            navigate(from,{replace:true});
             console.log(user)
         })
         .catch(error=>{
