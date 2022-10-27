@@ -8,7 +8,7 @@ const CourseLeftSite = ({catagory}) => {
     
     return (
         <div>
-            <Link className='left-site-nav' to={`/Catagory/${catagory.id}`}>{catagory.name}</Link>
+            <Link className='left-site-nav' to={`/details-category/${catagory.id}`}>{catagory.name}</Link>
         </div>
     );
 };
