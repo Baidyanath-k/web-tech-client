@@ -1,10 +1,11 @@
-
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaEye, FaStar } from 'react-icons/fa';
 
-const Category = ({category}) => {
-    console.log(category);
+const DetailsLearning = () => {
+    const detailLearning=useLoaderData();
+    console.log(detailLearning)
     const {
         author,
         details,
@@ -12,7 +13,7 @@ const Category = ({category}) => {
         title,
         total_view,
         image_url
-    } = category;
+    } = detailLearning;
     return (
         <div>
             <Card className="text-center mb-4">
@@ -50,8 +51,7 @@ const Category = ({category}) => {
             </Card.Footer>
             </Card>
         </div>
-
     );
 };
 
-export default Category;
+export default DetailsLearning;

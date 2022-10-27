@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import Blog from "../pages/Blog/Blog";
 import Courses from "../pages/Courses/main/Courses";
 import DetailsCategory from "../pages/DetailsCategory/DetailsCategory";
+import DetailsLearning from "../pages/DetailsLearning/DetailsLearning";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Profile from "../pages/Profile/Profile";
@@ -48,7 +49,12 @@ export const router=createBrowserRouter([
                 path:'/details-category/:id',
                 element:<DetailsCategory></DetailsCategory>,
                 loader:({params})=>fetch(`http://localhost:5000/details-category/${params.id}`)
-            }
+            },
+            {
+                path:'/details/:id',
+                element:<DetailsLearning></DetailsLearning>,
+                loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+            },
 
 
         ]

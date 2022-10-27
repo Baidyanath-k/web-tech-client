@@ -5,8 +5,9 @@ import { FaStar,FaEye } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const CourseMiddleSite = ({detail}) => {
-    console.log(detail)
+    
     const {
+        _id,
         details,
         image_url,
         rating,
@@ -23,7 +24,7 @@ const CourseMiddleSite = ({detail}) => {
                     {details.slice(0,150)+'...'}
                 </Card.Text>
                 <Button variant="primary">
-                    <Link className='text-decoration-none text-white-50'>See Details</Link>
+                    <Link to={`/details/${_id}`} className='text-decoration-none text-white-50'>See Details</Link>
                 </Button>
             </Card.Body>
             <Card.Footer className="text-muted d-flex justify-content-between align-items-center">
